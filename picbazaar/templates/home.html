@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <title>My Pic Bazaar</title>
+
+    <style>
+      .bg {
+        background: #4fc3f7 !important;
+      }
+      .list-group-item.active {
+        background: #4fc3f7 !important;
+        border-color: #4fc3f7 !important;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    {% include 'navbar.html' %} {% comment %}
+    <h1>Hello, world!</h1>
+
+    {% endcomment %} {% comment %} main code is here {% endcomment %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          {% comment %} categories {% endcomment %}
+          <div class="list-group">
+            <a
+              href="/home"
+              class="list-group-item list-group-item-action active"
+            >
+              All Images
+            </a>
+            {% for c in cats %}
+            <a
+              href="/category/{{c.pk}}"
+              class="list-group-item list-group-item-action"
+            >
+              {{c.title}}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-10">
+          {% comment %} images {% endcomment %} {% comment %} {% for i in images
+          %}
+
+          <h1>{{ i.title }}</h1>
+
+          {% endfor %} {% endcomment %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for i in images %}
+
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="/media/{{i.image}}"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <p class="card-text">{{ i.description }}</p>
+                    <a
+                      href="#"
+                      class="btn btn-primary"
+                      onclick="showModalwithImage('{{ i.image }}')"
+                    >
+                      View
+                    </a>
+                  </div>
+                </div>
+
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal"
+        id="image-modal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Vivek Pic Bazaar
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="#!" id="image-show" class="img-fluid" alt="" />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              {% comment %}
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+              {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Optional JavaScript; choose one of the two! -->
+
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+      ></script>
+
+      <!-- Option 2: Separate Popper and Bootstrap JS -->
+      <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+      <script>
+        function showModalwithImage(imageUrl) {
+          $("#image-modal").modal("show");
+          $("#image-show").attr("src", `/media/${imageUrl}`);
+        }
+      </script>
+    </div>
+  </body>
+</html>
