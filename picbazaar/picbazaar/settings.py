@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a7w+i@ar=u+#v9cq4q*uy8+j_u_^l894p*uv=-$m7qhw6fpt6w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','django-picbazaar.herokuapp.com']
 
 
 # Application definition
