@@ -1,1 +1,0 @@
-web: gunicorn picbazaar.wsgi --log-file -
