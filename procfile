@@ -1,2 +1,1 @@
-heroku ps:scale web=1
-web: gunicorn picbazaar.wsgi --log-file -
+web: gunicorn picbazaar.wsgi
