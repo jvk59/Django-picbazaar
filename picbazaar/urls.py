@@ -28,10 +28,10 @@ urlpatterns =[
     path('admin/', admin.site.urls),
     path('aboutus/', show_about_page),
     path('home/',show_home_page),
-    path('category/<int:cid>/',show_category_page)
+    path('category/<int:cid>/',show_category_page),
     
-    # url(r'^media/(?P<path>.*)$', serve,{'document_root':    settings.MEDIA_ROOT}), 
-    # url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':    settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})
     # url(r'^$',home, name="home"),
     # url(r'^myapp/', include('myapp.urls'))
 ]
